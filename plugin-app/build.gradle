@@ -22,6 +22,7 @@ android {
         }
     }
 
+    flavorDimensions(*flavorDimensionList, 'DimensionA')
     // 将插件applicationId设置为和宿主相同
     productFlavors {
         /*plugin {
@@ -29,6 +30,7 @@ android {
         }*/
 
         iwirst {
+            dimension 'DimensionA'
             applicationId "com.tencent.shadow.sample.host"
         }
 
@@ -83,9 +85,9 @@ shadow {
                     pluginApk1 {
                         businessName = 'sample-plugin'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
                         partKey = 'sample-plugin'
-                            buildTask = 'assembleIwirstDebug'
+                            buildTask = 'assemblePluginIwirstDebug'
 //                        apkName = 'plugin-app-plugin-debug.apk'
-                        apkPath = 'plugin-app/build/outputs/apk/iwirst/debug/plugin-app-iwirst-debug.apk'
+                        apkPath = 'plugin-app/build/outputs/apk/pluginIwirst/debug/plugin-app-plugin-iwirst-debug.apk'
                     }
                 }
             }
@@ -99,7 +101,7 @@ shadow {
                         partKey = 'sample-plugin'
                         buildTask = 'assembleIwirstRelease'
 //                        apkName = 'plugin-app-plugin-release.apk'
-                        apkPath = 'plugin-app/build/outputs/apk/iwirst/release/plugin-app-iwirst-release.apk'
+                        apkPath = 'plugin-app/build/outputs/apk/pluginIwirst/release/plugin-app-iwirst-release.apk'
                     }
                 }
             }
